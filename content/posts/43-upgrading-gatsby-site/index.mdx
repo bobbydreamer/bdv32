@@ -214,6 +214,18 @@ Today, when trying to make some posts and test via `gatsby develop`, saw few war
          nodes {
       ```
 
+5. Setup a new git repo for this version [Github:bdv32](https://github.com/bobbydreamer/bdv32)
+  ```sh 
+  git init
+  git add .
+  git commit -m "September 2020 Update 2 - New LekoArts theme version"
+  git branch -M main
+  git remote add origin https://github.com/bobbydreamer/bdv32.git
+  git push -u origin main
+  ```
+
+6. Setup Firebase hosting, instructions are in [here](./deploying-and-hosting-gatsby-site-in-firebase)
+
 ### # Whats changed
 * Changing the the background color of the selected text
   * Previous version
@@ -222,7 +234,7 @@ Today, when trying to make some posts and test via `gatsby develop`, saw few war
   ![files in folder](./sel-new.png)  
 
 * Font size in code block in the previous version it was bit smaller, now its bigger. Below are the differences found related to the size, decided to leave it as it is. 
-  ```ts:title=bdv32\src\@lekoarts\gatsby-theme-minimal-blog\styles\code.ts(diff) {3}
+  ```ts:title=bdv32\src\@lekoarts\gatsby-theme-minimal-blog\styles\code.ts(diff)
   ".prism-code": {
   -  fontSize: 1,
   -  padding: 3,
@@ -230,16 +242,15 @@ Today, when trying to make some posts and test via `gatsby develop`, saw few war
   +  padding: `2rem 1rem 1rem 1rem`,
   ```
 
-
-D:\BigData\08. HTML\Gatsby\lupin\bdv2\src\@lekoarts\gatsby-theme-minimal-blog\texts
-
-https://github.com/bobbydreamer/bdv3.git
-
-git remote add origin https://github.com/bobbydreamer/bdv3.git
-git pull https://github.com/bobbydreamer/bdv3.git master
-
-
-datemodified:3/1/2020..5/1/2020
+* I am seeing this new warning message 
+  ```sh
+  warn Query takes too long:
+  File path: D:/BigData/08. HTML/Gatsby/lupin/bdv32/node_modules/@lekoarts/gatsby-theme-minimal-blog-core/src/templates/post-query.tsx
+  URL path: /gatsby-theme-features
+  Context: {
+      "slug": "/gatsby-theme-features",
+      "formatString": "DD.MM.YYYY"
+  ```
 
 ### # References
 * [Previous version : Changing theme of the website manually](./changing-gatsby-colors-manually)
