@@ -1,0 +1,6 @@
+User-agent: *
+
+# Hello human
+# I hope you found something useful here
+
+sitemap: https://bobbydreamer.com/sitemap.xml
