@@ -53,19 +53,16 @@ gatsby serve
 firebase serve --only hosting
 firebase deploy -m "November 2020 : Update 1 : Git Theory 7 Pages"
 ```
-<<<<<<< HEAD
 
 Git commands used
 ```
 git add . 
 git commit -m "November 2020 : Update 1 : Git Theory 7 Pages"
+git push 
 
-# When some files are forgotten to add
+# When some files are forgotten to add ( dont do this after git push )
 git add .
 git commit --amend --no-edit
 ```
 
-=======
- 
->>>>>>> 895d77e3e6d1f1aa0d01571ce0a906cf3efd91f4
 ## 🌟 Thanks for visiting my site and Github Repo

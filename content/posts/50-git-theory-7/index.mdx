@@ -15,10 +15,60 @@ This picture, sort of gives an overview of some major git commands and where it 
 
 Below are some useful git commands, tests and references. 
 
-| Description   | commands                               |
-| :--------- | :---------------------------------------- |
-| List of all files in a commit tree | git ls-tree --name-only -r HEAD |
-| List of all files changed in a commit | git diff-tree --no-commit-id --name-only -r HEAD |
+##### Git Configuration 
+
+| Description                                                  | Git Command                                      |
+| ------------------------------------------------------------ | ------------------------------------------------ |
+| Configure the author name to be used with your commits.      | `git config --global user.name "Sushanth Bobby"` |
+| Configure the author email address to be used with your commits | `git config --global user.email bobby.dreamer@gmail.com` |
+
+
+##### Git Everyday 
+
+| Description                                                  | Git Command                                      |
+| ------------------------------------------------------------ | ------------------------------------------------ |
+| Staging files            | `git add .`                  |
+| Commit                   | `git commit -m "Added/Updated/Deleted November 2020 : route-name, page-name : Did what ?`  |
+| Commit added and changed | `git commit -am "Added/Updated/Deleted November 2020 : route-name, page-name : Did what ?` |
+| List status              | `git status`                 |
+| Check ignore             | `git check-ignore -v *`      |
+| Creating tags            | `git tag 1.0.0 <commitID>`   |
+| Replaces file in working directory | `git checkout -- fileA.txt` |
+
+##### Git Branch
+
+| Description                                                  | Git Command                     |
+| ------------------------------------------------------------ | ------------------------------- |
+| List all the branches in your repo, and also tell you what branch you're currently in | `git branch` |
+| Switch from one branch to another                            | `git checkout branch_name`      |
+| Create a new branch and switch to it                         | `git checkout -b branch_name`   |
+| Deletign a branch                                            | `git branch -d <branchname>`    |
+| Forcibly delete the branch                                   | `git branch –D feature`         |
+
+
+##### Git Remote
+
+| Description                                                  | Git Command                       |
+| ------------------------------------------------------------ | --------------------------------- |
+| Clone a repository into a new directory                                 | `git clone repo_url`   |
+| Download objects and refs from remote repository for master branch      | `git fetch origin master`   |
+| Download objects and refs from remote repository                        | `git fetch --all`      |
+| Fetch and merge changes on the remote server to your working directory: | `git pull`             |
+| List all currently configured remote repository urls             | `git remote -v`               |
+| Pushing commits to remote                                        | `git push`                    |
+| Push and add upstream(tracking) reference for argument-less pull | `git push -u <remote-branch>` |
+| Send changes of master branch to remote origin master branch     | `git push origin master`      |
+| Push all branches to your remote repository                      | `git push --all origin`       |
+| Push all tags to remote repository                               | `git push --tags origin`      |
+
+
+##### Other Git commands
+
+| Description                                                  | Git Command                  |
+| ------------------------------------------------------------ | ---------------------------- |
+| Search the working directory for `foo()`                     | `git grep "foo()"`           |
+| List of all files in a commit tree                           | git ls-tree --name-only -r HEAD  |
+| List of all files changed in a commit                        | git diff-tree --no-commit-id --name-only -r HEAD |
 
 
 #### # References

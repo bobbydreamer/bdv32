@@ -292,21 +292,38 @@ $ git remote -v
 #### # Forking
 Forking is a popular workflow, mostly used in open-source projects. Fork operation clones the remote repository to your github/BitBucket account instead of downloadig it your local computer. Forked repositories are special they just `git clone` on the server-side maintained by GH/BB. Later you can clone the personalized copy of that repository to your local system. 
 
+Below is the process when creating a fork
+![Github - Fork](./git-fork-1.png)  
+
 Forking workflow mostly would be following below steps, 
-1. Doing a fork on the open source project 
-2. Once you get the personalized copy that open-source repository to your account, clone it to your local. Remote `origin` is added automatically. 
-3. `git remote add` is added to the official open-source repository(upstream). 
+1. Do a fork in GitHub or BitBucket on any project which you want to contribute to, it could be an open source project as well.
+2. Once you get the personalized copy that open-source repository to your account, clone it to your local. This forked repository becomes the `origin`, remote is automatically added by `git clone` which you can check by `git remote -v`. 
+3. Go to the original open-source repository which you wanted contribute to and get the URL by clicking the clone drop-down. Come back to your local machine and do `git remote add upstream URL`, this will add that official open-source repository as upstream. 
     * Basically forked repos have two remotes 
-      + Origin : Personalized copy of the forked repo 
-      + Upstream : Offical open source repository
-        - `git remote add upstream <url>`
+      + *Origin* which points to personalized copy of the forked repo 
+      + *Upstream*, points to the offical open-source repository
+        - Upstream is setup, so that you can regularly pull the latest changes
 4. Create a local branch and work on it and when it looks good, commit it.
 5. Periodcally check the offical repository for any new updates and pull using 
     * `git pull upstream master`
 6. Push the changes to your personalized copy of the open-source repository. 
     * `git push origin feature-branch`
-7. Open a Pull Request(PR) from the new branch to the 'official open-source' repository.
-8. PR get reviewed by the maintainer and when all good, gets approved for merge to the main open source project repository. 
+7. Go to github, you should see *Compare  & pull request* button, click it to begin a Pull Request(PR) from the new branch to the 'official open-source' repository. In the pull request, you will see that orginal open-source repository is listed as the "base repository", and your fork is listed as the "head repository". Before submitting the PR, you need to describe the change you have made. 
+8. The maintainer might ask you to make some changes you can do by, 
+    * Go to your local feature-branch
+    * Make updates and commit
+    * Push changes to your fork
+    * Open your pull request, you should see your new commits. 
+    * Discuss on the changes in comments and resolve conversation.
+9. PR get reviewed by the maintainer and when all good, gets approved for merge to the main open source project repository. You will be given an option to delete your branch, you can proceed to do so, if you wish. If you delete the branch, you should delete it in your local as well. `git branch -D feature-branch`
+10. Synchronize your fork by running below commands and after that go to Github to your fork, you should see a message like "This branch is even with open-source repository". This step is not necessary but it keeps thing clean. 
+  ```
+  git pull upstream master
+  git push origin master
+  ```
+
+Below is the process when submitting a pull request, 
+![Github - Fork](./git-fork-2.png)  
 
 On the other side what the maintainer does to integrate is, 
 1. Maintainer pulls the contributor’s changes into his/her own local repository
