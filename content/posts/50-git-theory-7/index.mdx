@@ -43,7 +43,7 @@ Below are some useful git commands, tests and references.
 | Switch from one branch to another                            | `git checkout branch_name`      |
 | Create a new branch and switch to it                         | `git checkout -b branch_name`   |
 | Deletign a branch                                            | `git branch -d <branchname>`    |
-| Forcibly delete the branch                                   | `git branch –D feature`         |
+| Forcibly delete the branch(before merging)                   | `git branch –D feature`         |
 
 
 ##### Git Remote
@@ -52,12 +52,14 @@ Below are some useful git commands, tests and references.
 | ------------------------------------------------------------ | --------------------------------- |
 | Clone a repository into a new directory                                 | `git clone repo_url`   |
 | Download objects and refs from remote repository for master branch      | `git fetch origin master`   |
-| Download objects and refs from remote repository                        | `git fetch --all`      |
-| Fetch and merge changes on the remote server to your working directory: | `git pull`             |
+| Download objects and refs from remote repository for all branches       | `git fetch --all`      |
 | List all currently configured remote repository urls             | `git remote -v`               |
+| Push and add upstream(tracking) reference for argument-less pull | `git push -u origin master`   |
+| Pull from remote master and set as upstream                      | `git pull -u origin master`   |
+| Fetch and merge changes on the remote server to your working directory: | `git pull`             |
 | Pushing commits to remote                                        | `git push`                    |
-| Push and add upstream(tracking) reference for argument-less pull | `git push -u <remote-branch>` |
 | Send changes of master branch to remote origin master branch     | `git push origin master`      |
+| Delete remote branch                                             | `git push origin -d feature`  |
 | Push all branches to your remote repository                      | `git push --all origin`       |
 | Push all tags to remote repository                               | `git push --tags origin`      |
 

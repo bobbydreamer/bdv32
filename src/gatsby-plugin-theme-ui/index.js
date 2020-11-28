@@ -13,9 +13,9 @@ const theme = merge(tailwind, {
     divide: tailwind.colors.gray[4],
     modes: {
       light:{
-        background: `#d0e1f9`, /* Background */        
-        primary: `#30157d`,
-        secondary: `#ee4035`   /* Alink color */
+        background: `#bddccc`, /* Background */        
+        primary: `#7400b8`,    /* Alink posted color */
+        secondary: `#ee4035`   /* Alink top menu color */
       },      
       dark: {
         background: `#1e172c`,
@@ -42,6 +42,7 @@ const theme = merge(tailwind, {
       textRendering: `optimizeLegibility`,
       WebkitFontSmoothing: `antialiased`,
       MozOsxFontSmoothing: `grayscale`,
+      fontWeight: 500,      
     },
     p: {
       fontSize: [1, 1, 2],

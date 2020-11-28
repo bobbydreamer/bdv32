@@ -1,6 +1,6 @@
 ---
 title: Changing theme of the website manually
-date: 2020-03-21
+date: 2020-11-28
 description: Poking node_modules
 tags:
   - decisions
@@ -124,6 +124,29 @@ This uses
 
 ![Light](./LightMode6.PNG) 
 
+### # Light theme : 7
+This uses 
+```sh
+# Below fontWeight was newly added in the root as the header link were by default 400, 
+# which was very thin for this color.
+  styles: {
+    root: {
+      fontWeight: 500,      
+    }
+  }
+
+# Body background and posted link color, it was very hard to find constrasting color for this background 
+# has to settle with this primary color. 
+    modes: {
+      light:{
+        background: `#bddccc`, /* Background */        
+        primary: `#7400b8`,    /* Alink posted color */
+      },      
+    }
+```
+
+![Light](./LightMode7.PNG) 
+
 ### # Dark theme : 1
 This uses 
 ```sh 
@@ -211,7 +234,8 @@ Hong Kong neon street colors
 
 ### # You know who he winner is 
 
-1. Light theme 2
+1. Light theme 2 (till 28/Nov/2020)
+1. Light theme 7 
 1. Dark theme 2
 
 ### # Making these changes permanent
