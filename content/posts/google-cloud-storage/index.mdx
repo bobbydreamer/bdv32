@@ -1,6 +1,6 @@
 ---
 title: Google Cloud Storage
-date: 2020-04-10
+date: 2020-12-09
 description: These are things to do 
 tags:
   - notes 
@@ -8,7 +8,8 @@ tags:
   - GCS 
 slug: "/google-cloud-storage"
 ---
-**Last updated** : 10/April/2020    
+**Post created** : 10/April/2020    
+**Last updated** : 09/December/2020    
  
 I am a google fan. I been using gmail for nearly 15years and google is providing 15gb of free space in google drive for nearly 8+ years. With freebies like this i am going to store my personal data as well in google storage and thats how everything started. 
 
@@ -202,12 +203,17 @@ gsutil acl ch -u AllUsers:R gs://[BUCKET_NAME]/[OBJECT_NAME]
 
 **Making all objects in a bucket publicly readable**    
 ```
+# Note: roles/storage.objectViewer includes permission to list the objects in the bucket.
 gsutil iam ch allUsers:objectViewer gs://[BUCKET_NAME]
+
+# Note : If you don't want to grant listing publicly
+gsutil iam ch allUsers:roles/storage.legacyObjectReader gs://[BUCKET_NAME]
 ```
 
 **Remove public access**    
 ```
-gsutil iam ch -d allUsers:objectViewer gs://my-awesome-bucket
+gsutil iam ch -d allUsers:objectViewer gs://[BUCKET_NAME]
+gsutil iam ch -d allUsers:roles/storage.legacyObjectReader gs://[BUCKET_NAME]
 ```
 
 **Accessing public data**    
@@ -323,18 +329,49 @@ There are charges for retreiving data or metadata from Nearline Storage, Coldlin
 1. Before starting, plan on setting some standards for buckets, naming conventions, file types, content types and etc..
 1. You don't need to dump all the data to one single project, if you need you can have a separation there. 
 
+
+### # How to's
+
+**Create bucket and make it public**    
+
 ```sh
 -- Create a public bucket
 gsutil mb -c STANDARD -l us-west1 -b on gs://bobbydreamer-com-technicals
 
--- Give public access as viewer
+-----------------------------------------------------------------------------
+-- Give public access as viewer and allows listing as well
 gsutil iam ch allUsers:objectViewer gs://bobbydreamer-com-technicals
+-- (OR) --
+-- Give public access as viewer but restrict listing
+gsutil iam ch allUsers:roles/storage.legacyObjectReader gs://[BUCKET_NAME]
+-----------------------------------------------------------------------------
 
 -- Copying file to bucket
 bobby_dreamer@cloudshell:~ (bobbydreamer-196820)$ gsutil -m cp bse_daily_365d.csv gs://bobbydreamer-com-technicals
 Copying file://bse_daily_365d.csv [Content-Type=text/csv]...
 - [1/1 files][ 69.3 MiB/ 69.3 MiB] 100% Done
 Operation completed over 1 objects/69.3 MiB.
+```
+
+**Moving files from one project to another**    
+When tidying up project this is the best approach and easiest, assuming you have access to the both the projects. 
+```
+# syntax
+gsutil -m rsync -r gs://[SOURCE-PROJECT-BUCKET_NAME] gs://[TARGET-PROJECT-BUCKET_NAME]
+
+# example
+bobby_dreamer@cloudshell:~ (bobbydreamer-111222)$ gsutil -m rsync -r gs://test-20200407 gs://test-contact
+Building synchronization state...
+Starting synchronization...
+Copying gs://test-20200407/BTD-Analysis1V3-lf.py [Content-Type=text/x-python]...
+Copying gs://test-20200407/BTD-Prof.txt [Content-Type=text/plain]...
+Copying gs://test-20200407/bse_daily_5d.csv [Content-Type=application/octet-stream]...
+Copying gs://test-20200407/BTD-profile-np.txt [Content-Type=text/plain]...
+Copying gs://test-20200407/BTD-Analysis1V3.py [Content-Type=text/x-python]...
+Copying gs://test-20200407/test-lp.py [Content-Type=text/x-python]...
+Copying gs://test-20200407/bse_daily_365d.csv [Content-Type=application/octet-stream]...
+- [7/7 files][ 70.3 MiB/ 70.3 MiB] 100% Done
+Operation completed over 7 objects/70.3 MiB.
 ```
 
 ### # Resources 

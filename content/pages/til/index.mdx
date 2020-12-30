@@ -3,6 +3,41 @@ title: Today I Learned
 slug: "/til"
 ---
 
+**Date** : 22/December/2020    
+
+I was about to reach my 15GB of freespace in google. Breaking it down, i had 1GB in Drive, 5GB in GMail and 8GB in Photos. I was bit surprised to see 5GB in Gmail, i didn't think i had attachments in mail. So, i started to hunt them down with below commands, initially started with mails > 10MB and later got to 1MB. Now got it down to 2GB after deleting lots of photos i had attachment. Got to find few more efficient ways to delete emails. Its a time consuming task. 
+
+```
+has:attachment larger:10M
+has:attachment larger:1M
+```
+
+___ 
+
+**Date** : 08/December/2020    
+
+Googles weird way of reusing XML namespace. I was like initially WHAT. Is google using S3 behind the hood. 
+![Cloud Storage XML namespace](./ListBucketResult.PNG)
+
+When i started digging(googling) into this found out that this tag(ListBucketResult) was specified by AWS (Amazon) and GCP decided to re-use this specification in its own implementation rather than just implement a completely new specification which likely would have been semantically identical to that which already existed. The re-use of interfaces is normally a good thing. 
+
+___ 
+
+**Date** : 30/November/2020    
+
+Reworks are frustrating. Its the same work which keeps coming back, again and again. If it’s a product, few tweaks here and there but its not easy when you have to rethink lot of things. If it’s a report, its much worse, at times, I get exhausted in preparing the report, itself. Time best spent should be in reviewing the report not in the making. Reworks could come from different areas and in different ways, its stressful. 
+
+One workaround I found to reduce stress is not thinking about it as a rework but as a new work. Once you deliver, it's done, if it comes back, think of it as a new work. In preparing reports, I break it down as two tasks, one preparing it and two analyzing it. 
+
+Do remember anyhow you are going to do that work, do you want to do it with stress ? Breaking it down (or) changing the way, you look at it, works.
+
+___ 
+
+**Date** : 29/November/2020    
+
+Found this app [hemingwayapp.com](http://www.hemingwayapp.com/) which helps in reviewing the content.
+___ 
+
 **Date** : 02/October/2020    
 
 In windows explorer using below expression can find file modified between date ranges. 
