@@ -22,10 +22,10 @@ Thinking in security perspective, there are two levels of security available to 
 
 
 ### # Firebase rules
-Firebase encourages to use server side security rules to ensure only authorized users can access the data and rules are designed in such a way that accesses are node-based. Think of it in this way, granting a read or write privilege to a parent node, user will gain access to all the data in child nodes. 
+Firebase encourages to use server side security rules to ensure only authorized users can access the data and rules are designed in such a way that accesses are node-based. If a user has access to parent nodes, that user will be able to access child nodes as well. 
 
 > These rules control access to file storage and database access, and are enforced on the Firebase servers. So no matter if it's your code, or somebody else's code that uses you configuration data, it can only do what the security rules allow it to do.
-> - [Frank van Puffelen](https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public)
+> -- [Frank van Puffelen](https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public)
 
 Firebase rules are nodes-based meaning they sort of look like json key:values. As a general rule, keep your security rules simple. Because if your data is not well structured, rules can get complex. Try not to get into that zone. 
 
@@ -100,6 +100,13 @@ If you set it as below, it means reading is public.
 ```json
         ".read": true, 
 ```
+
+
+**Things to remember,**    
+
+* Firebase rules generally cascades, granting a read or write privilege to a parent node always grants that read/write access to all child nodes.
+* Code running in Cloud Functions uses the Admin SDK to access Firebase/Firestore. The Admin SDK by default runs with administrative privileges that bypass your security rules. This is by design so that your administrative code can do things that regular user-code can not do, without complicating your security rules.
+
 
 ### # Restricting app to work with specific domain
 
