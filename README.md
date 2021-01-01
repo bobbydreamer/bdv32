@@ -51,13 +51,13 @@ gatsby build
 gatsby serve
 
 firebase serve --only hosting
-firebase deploy -m "November 2020 : Update 3 : SRE Fix 1"
+firebase deploy -m "January 2021 : Update 1 : Updated Howard Marks Page"
 ```
 
 Git commands used
 ```
 git add . 
-git commit -m "November 2020 : Update 3 : SRE Fix 1"
+git commit -m "January 2021 : Update 1 : Updated Howard Marks Page"
 git push 
 
 # When some files are forgotten to add ( dont do this after git push )
