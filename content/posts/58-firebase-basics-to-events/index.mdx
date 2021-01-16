@@ -9,6 +9,15 @@ tags:
 slug: "/58-firebase-basics-to-events"
 ---
 
+In the beginning 2017 or 2018, when i first started to learn and use firebase. My perspective on certain things changed. Usually, when i get an idea or concept, i start to write the structure of the table and how the data is going to be stored and in parallel, i draw a simple sketch of the application and write out what data its going to access from which table. For me, it sort given an idea of the flow. 
+
+Firebase sort of takes this to the next level and makes you say, **Dont start with the data structure design at all**. First design the UI and work on the  *User Journey* and then based on the user journey build the structure of data. 
+
+Relational database users or DBA may think in a way 
+Responsibility of the database is to store the data in the most effective way – it shouldn’t be affected by how the UX will work.
+
+But when using firebase type of database, thinking like relational database designer will affect the performance of the application as firebase doesn't have any SQL or JOINS. So, designing the application should start from UI to Backend not the other way around. 
+
 Here i am building a simple application to illustrate various firebase events in a simple HTML page. 
 
 **Working example** is available here in [Firebase Experiments : Firebase Events](https://tests.bobbydreamer.com/firebase-events). To test it out, first you will have to [register here](https://tests.bobbydreamer.com/firebase-authentication). Once you finish testing, you can delete the user yourself, option is available in the page. I would be really grateful, if you do that. 
