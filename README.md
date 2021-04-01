@@ -51,7 +51,7 @@ gatsby build
 gatsby serve
 
 firebase serve --only hosting
-firebase deploy -m "January 2021 : Update 1 : Updated Howard Marks Page"
+firebase deploy -m "February 2021 : Update 1 : Added Mohnish, Lynch and Musashi. Few updates"
 ```
 
 Git commands used
