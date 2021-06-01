@@ -40,6 +40,23 @@ More customization instruction are in [Original-README.md](./Original-README.md)
     http://localhost:8000/
     ```
 
+1. Git commands used during testing phase 
+```
+# Every month create a new branch June2021(First Character Uppercase followed by year)
+Create and Checkout : git checkout -b June2021
+Checkout            : git checkout June2021
+
+# After all changes. Commit in the monthly branch. When needed to merge do the following
+git commit -m "June 2021 : Update 3 : Updated README.md"
+git checkout main
+git merge June2021 -m "June 2021 : Merge Update 2 to main"
+```
+
+1. Before logging off always be in monthly branch
+```
+git checkout June2021
+```
+
 ## 🚀 Deployment
 
 I am using google firebase hosting for deployment and follow instructions in this [link](https://www.gatsbyjs.org/docs/deploying-to-firebase/). 
@@ -54,7 +71,7 @@ firebase serve --only hosting
 firebase deploy -m "June 2021 : Update 1 : Added contents"
 ```
 
-Git commands used
+Git commands used during deployment
 ```
 git add . 
 git commit -m "June 2021 : Update 1 : Added contents"
@@ -63,6 +80,17 @@ git push
 # When some files are forgotten to add ( dont do this after git push )
 git add .
 git commit --amend --no-edit
+```
+
+New Branching commands
+```
+To see all branch commits : git lol --all
+Create and Checkout : git checkout -b June2021
+Checkout            : git checkout June2021
+
+#Merging
+git checkout main
+git merge June2021 -m "June 2021 : Merge Update 2 to main"
 ```
 
 ## 🌟 Thanks for visiting my site and Github Repo
