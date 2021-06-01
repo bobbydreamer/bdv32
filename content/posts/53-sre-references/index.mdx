@@ -67,33 +67,33 @@ Success of DevOps introduced various subsets like :
 
 ##### Introducing SRE
 
-In a system, when any features that being introduced and its benefits could be small to medium and to customers changes could be invisible to visible but when it breaks, if the side-effects are severe and clearly visible thats a fragile system. Banking systems or any systems having large number of customers and when being essential to society should be exact opposite of fragile, it should be between robust and durable but not too robust or durable.
+In a system, when any features are being introduced and its benefits could be, from small to medium and to customers changes could be invisible to visible but when it breaks, if the side-effects are severe and clearly visible thats a fragile system. Banking systems or any systems having large number of customers and when being essential to society should be exact opposite of fragile, it should be between robust and durable but not too robust or durable.
 
 * Fault-tolerant
 * Servers may go "red" but services should be always green
 
 One of the reasons, that production failures happen could be, developers have less visibility of production systems in monitoring and handling incidents.
 
-DevOps & SRE might have originated around the same time but in different worlds like DevOps was adopted and followed by many organizations and open-source communities around the world whereas SRE was founded and practiced by only one organization in the world(ie., Google) and they called it as their 'Secret Sauce'.
+DevOps & SRE might have originated around the same time but in different worlds like DevOps was adopted and followed by many organizations and open-source communities around the world whereas SRE was founded and practiced by only one organization in the world(ie., Google) and they called it as their *'Secret Sauce'*.
 
-Site Reliability Engineering (SRE) is a discipline that incorporates aspects of software engineering and applies them to infrastructure and operations problems. The main goals are to create scalable and highly reliable software systems. 
+**Site Reliability Engineering (SRE)** is a discipline that incorporates aspects of software engineering and applies them to infrastructure and operations problems. The main goals are to create scalable and highly reliable software systems. 
 
 > what happens when a software engineer is tasked with what used to be called operations    
 > -- Ben Treynor, founder of Google's Site Reliability Team    
 
 SRE role is focused on intelligent decision making in order to improve service reliability, SRE provides framework for measurement that outlines practices for monitoring for incident response and for capacity planning. SREs will have to work with different people from different teams to understand their terminologies to make their imprecise language, quantify and make competing objectives, actionable and prioritize them. Using SRE framework we can define reliability and deliver user experience in precise terms and making all the conversations we had with different teams effective and make smarter decisions.
 
-When we ask hard questions to higher management such as "Should we spend our time in adding new features or making systems more reliable", there will be many viewpoints from different stakeholders as everybody has different perspective but most of the time, but one notable finding is everybody till that point had assumed system is built reliably and its proven many times its not unless one builds the capability to make the system reliable. When you look at a service from a customer perspective, they will always choose reliable service over unreliable ones and reliability is the major differentiating factor between competitors.
+Members of development and operations team have to ask hard questions to higher management such as *"Should we spend our time in adding new features or making systems more reliable ?"*, there will be many viewpoints from different stakeholders as everybody has different perspective but most of the time, but one notable finding is everybody till that point had assumed system is built reliably and its proven many times its not unless one builds the capability to make the system reliable. When you look at a service from a customer perspective, they will always choose reliable service over unreliable ones and reliability is the major differentiating factor between competitors.
 
-SREs main focus is to reduce toil by which they make time to do development/engineering tasks. Toil is *"the kind of work tied to running a production service that tends to be manual, repetitive, automatable, tactical, devoid of enduring value, and that scales linearly as a service grows"*. Google wants its SREs to spend less than 50% of their time doing toil. To achieve that, toil—which can be thought of as the result of operational technical debt—needs to be identified and paid back through building more automation. SREs days involves both ops work(tickets, on-call & manual tasks) and development work(internal tooling, SRE tools and building automatic systems). The percentage of time spent on ops and development work is an important metric to track as over time percentage of ops work for each system should decrease.
+An SRE organization's goal is keeping toil below 50% for each SRE and by doing so they make time for development and engineering tasks. **Toil** is *"the kind of work tied to running a production service that tends to be manual, repetitive, automatable, tactical, devoid of enduring value, and that scales linearly as a service grows"*, and can be thought of as the result of operational technical debt. SREs time involves both ops work (tickets, on-call & manual tasks) and development work (tooling, monitoring and automation) and over period of time ops work for each system should decrease.
 
-**Days in the life of SRE**
+**SRE Workload Lifecycle**
 
-* 50% time in Ops and 50% time in Development - Ideal at start
-* 80% time in Ops and 20% time in Development - This doesn't look good, so SREs shift 30% of Ops work to development team and get the stats back to 50/50
-* 25% time in Ops and 50% time in Development - SREs use the remaining 25% to share the workload of another team.
+* 50% time in Ops and 50% time in Dev - Ideal start at the beginning
+* 80% time in Ops and 20% time in Dev - Not a good state. 50% Operational threshold is crossed, so 30% of Ops work has to be shifted to development team.
+* 25% time in Ops and 50% time in Dev - Ideal end state. Assuming there are no performance issues, SRE team can take new project works (or) SREs are free to transfer to other SRE teams with open headcount.
 
-SREs main goal is to increase reliability, they do that by talking with various business stakeholders and monitoring customer usage to negotiate a realistic reliability percentage. For example, after various discussions SRE and Platform come to an availability level say 99.99% in that case below table shows how much downtime that system can have.
+SREs main focus is to increase reliability, they do that by talking with various business stakeholders and monitoring customer usage to negotiate a realistic reliability percentage. For example, after various discussions SRE and Platform come to an availability level say 99.99% in that case below table shows how much downtime that system can have.
 
 | Availability level | per year     | per quarter   | per month    | per week     | per day      | per hour     |
 |--------------------|--------------|---------------|--------------|--------------|--------------|--------------|
