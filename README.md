@@ -47,9 +47,9 @@ Create and Checkout : git checkout -b June2021
 Checkout            : git checkout June2021
 
 # After all changes. Commit in the monthly branch. When needed to merge do the following
-git commit -m "June 2021 : Update 3 : Updated README.md"
+git commit -m "June 2021 : Update 4 : Added some Db2 pages and moms food"
 git checkout main
-git merge June2021 -m "June 2021 : Merge Update 2 to main"
+git merge June2021 -m "June 2021 : Merge Update 4 to main"
 ```
 
 1. Before logging off always be in monthly branch
@@ -68,13 +68,13 @@ gatsby build
 gatsby serve
 
 firebase serve --only hosting
-firebase deploy -m "June 2021 : Update 1 : Added contents"
+firebase deploy -m "June 2021 : Update 4 : Added contents"
 ```
 
 Git commands used during deployment
 ```
 git add . 
-git commit -m "June 2021 : Update 1 : Added contents"
+git commit -m "June 2021 : Update 4 : Added contents"
 git push 
 
 # When some files are forgotten to add ( dont do this after git push )
