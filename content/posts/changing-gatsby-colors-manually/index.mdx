@@ -10,12 +10,11 @@ banner: ./DarkThemeNo2-neonHK.png
 slug: "/changing-gatsby-colors-manually"
 ---
 
-Since i am into colors and everything, i was poking around `node_modules` to change the current gatsby theme colors. Finally i found the .js file where the color details are specified and i started to playaround with it. 
-```sh
-bdv2\node_modules\@lekoarts\gatsby-theme-minimal-blog\src\gatsby-plugin-theme-ui\index.js
-```
+**Note** : As of release `@lekoarts/gatsby-theme-minimal-blog": "^3.0.2"`, theme changes are *Non-Shadowing* meaning you have to make changes in the `node_modules`. Earlier these changes can be shadowed and shadowed files were in `src\@lekoarts\gatsby-plugin-theme-ui\index.js`.
 
-Here are the things, i tried. 
+Now you will have make these changes in `node_modules\@lekoarts\gatsby-theme-minimal-blog\src\gatsby-plugin-theme-ui\index.js`.
+
+First lets see the themes and later we shall see the code changes. 
 
 ### # Original color theme
 
@@ -125,24 +124,12 @@ This uses
 ![Light](./LightMode6.PNG) 
 
 ### # Light theme : 7
-This uses 
+This uses below for light and fontWeight had to be increased to 500
 ```sh
-# Below fontWeight was newly added in the root as the header link were by default 400, 
-# which was very thin for this color.
-  styles: {
-    root: {
-      fontWeight: 500,      
-    }
-  }
-
-# Body background and posted link color, it was very hard to find constrasting color for this background 
-# has to settle with this primary color. 
-    modes: {
       light:{
         background: `#bddccc`, /* Background */        
         primary: `#7400b8`,    /* Alink posted color */
       },      
-    }
 ```
 
 ![Light](./LightMode7.PNG) 
@@ -238,21 +225,52 @@ Hong Kong neon street colors
 1. Light theme 7 
 1. Dark theme 2
 
-### # Making these changes permanent
-Above i made changes to files in `node_modules` folder but it will get overridden if i do a `npm install` elsewhere. To solve this problem Gatsby has a technique called *shadowing*
+### # Making the Non-Shadowing changes
 
-Below text is from [Shadowing in Gatsby Themes](https://www.gatsbyjs.org/docs/themes/shadowing/#extending-shadowed-files)
-> This feature allows users to replace a file in the src directory that is included in the webpack bundle with their own implementation. This works for React components, pages in src/pages, JSON files, TypeScript files, as well as any other imported file (such as .css) in your site.
+Filepath : `node_modules\@lekoarts\gatsby-theme-minimal-blog\src\gatsby-plugin-theme-ui\index.js`
 
-To override the file in    
-```sh
-bdv2\node_modules\@lekoarts\gatsby-theme-minimal-blog\src\gatsby-plugin-theme-ui\index.js
+```js {8-12,14-18,36}
+  colors: {
+    primary: tailwind.colors.purple[7],
+    secondary: `#5f6c80`,
+    toggleIcon: tailwind.colors.gray[8],
+    heading: tailwind.colors.black,
+    divide: tailwind.colors.gray[4],
+    modes: {
+      light:{
+        background: `#bddccc`, /* Background */        
+        primary: `#7400b8`,    /* Alink posted color */
+        secondary: `#ee4035`   /* Alink top menu color */
+      },      
+      dark: {
+        background: `#1e172c`,
+        primary: `#fad141`,
+        secondary: `#2ab7ca`,
+        heading: `#ff0080`,
+        toggleIcon: `#fdf498`,  
+        text: tailwind.colors.gray[4],        
+        divide: tailwind.colors.gray[8],
+        muted: tailwind.colors.gray[8],
+      },
+    },
+  },
+...
+  styles: {
+    root: {
+      color: `text`,
+      backgroundColor: `background`,
+      margin: 0,
+      padding: 0,
+      boxSizing: `border-box`,
+      textRendering: `optimizeLegibility`,
+      WebkitFontSmoothing: `antialiased`,
+      MozOsxFontSmoothing: `grayscale`,
+      fontWeight: 500,
+    },
 ```
 
-created a similar structure in 
-```
-bdv2\src\gatsby-plugin-theme-ui\index.js
-```
-
-This worked and likewise you can shadow many different files and customize your site in Gatsby. 
-
+### # Next Steps
+* [First set of custom changes made to this starter theme](../shadowing-and-non-shadowing)
+* [Changes to gatsby-config.js, hero and bottom](../how-i-made-this-site)
+* [Adding a Favicon](../adding-favicon-to-gatsby)
+* [Deploying & Hosting in Firebase](../deploying-and-hosting-gatsby-site-in-firebase)

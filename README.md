@@ -42,19 +42,21 @@ More customization instruction are in [Original-README.md](./Original-README.md)
 
 1. Git commands used during testing phase 
 ```
-# Every month create a new branch June2021(First Character Uppercase followed by year)
-Create and Checkout : git checkout -b June2021
-Checkout            : git checkout June2021
+# Every month create a new branch July2021(First Character Uppercase followed by year)
+Create and Checkout : git checkout -b July2021
+Checkout            : git checkout July2021
 
 # After all changes. Commit in the monthly branch. When needed to merge do the following
-git commit -m "June 2021 : Update 4 : Added some Db2 pages and moms food"
+git commit -m "July 2021 : Update 4 : Added some Db2 pages and moms food"
 git checkout main
-git merge June2021 -m "June 2021 : Merge Update 4 to main"
+git merge July2021 -m "July 2021 : Merge Update 2 to main"
+
+
 ```
 
 1. Before logging off always be in monthly branch
 ```
-git checkout June2021
+git checkout July2021
 ```
 
 ## 🚀 Deployment
@@ -68,13 +70,13 @@ gatsby build
 gatsby serve
 
 firebase serve --only hosting
-firebase deploy -m "June 2021 : Update 4 : Added contents"
+firebase deploy -m "July 2021 : Update 4 : Added contents"
 ```
 
 Git commands used during deployment
 ```
 git add . 
-git commit -m "June 2021 : Update 4 : Added contents"
+git commit -m "July 2021 : Update 4 : Added contents"
 git push 
 
 # When some files are forgotten to add ( dont do this after git push )
@@ -85,12 +87,12 @@ git commit --amend --no-edit
 New Branching commands
 ```
 To see all branch commits : git lol --all
-Create and Checkout : git checkout -b June2021
-Checkout            : git checkout June2021
+Create and Checkout : git checkout -b July2021
+Checkout            : git checkout July2021
 
 #Merging
 git checkout main
-git merge June2021 -m "June 2021 : Merge Update 2 to main"
+git merge July2021 -m "July 2021 : Merge Update 2 to main"
 ```
 
 ## 🌟 Thanks for visiting my site and Github Repo

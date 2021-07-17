@@ -247,6 +247,50 @@ Note : When you are building a big app, let just say enterprise level, dont igno
   ::      e.txt
   ```
 
+* * * 
+
+  ##### Scenario : I want to track a specific folder in `node_modules` but ignore the rest
+
+  Below is the easiest way to ignore `node_modules` folder
+  ```sh:title=.gitignore
+  node_modules/
+  ```
+  
+  In my case i want to track changes in folder `node_modules/@lekoarts/`. So as per [the gitignore documentation](https://git-scm.com/docs/gitignore), when negating. 
+  > it is not possible to re-include a file if a parent directory of that file is excluded.
+  
+  In other words, no greedy matches, you cannot use `**`. Below you can see that `node_modules/@lekoarts` folder is getting ignored due to `node_modules/` mentioned in `.gitignore` file line number 36. 
+  
+  ```sh
+  node_modules/
+  
+  # output
+  > git check-ignore -vn node_modules/@lekoarts 
+  .gitignore:36:node_modules/     node_modules/@lekoarts
+  ```
+  
+  Below i have included `!node_modules/@lekoarts` with excalmation symbol, a negating pattern to un-ignore the file/folder. But `git check-ignore` shows same output. 
+  ```sh {2}
+  node_modules/
+  !node_modules/@lekoarts
+  
+  # output
+  > git check-ignore -vn node_modules/@lekoarts
+  .gitignore:36:node_modules/     node_modules/@lekoarts
+  ```
+  
+  When you introduce a `*` single-level wildcard. It works. Now it shows the line number 37 in `.gitignore` using negating pattern and using `git status` we can confirm that folder will be added as before when executing `git status`, `node_modules/` folder wouldn't appear. 
+  
+  ```sh {1-2,6}
+  node_modules/*
+  !node_modules/@lekoarts
+  
+  # output
+  > git check-ignore -vn node_modules/@lekoarts
+  .gitignore:37:!node_modules/@lekoarts   node_modules/@lekoarts
+  ```
+
+* * * 
 
 #### # git rm    
 

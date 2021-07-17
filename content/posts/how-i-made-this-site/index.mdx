@@ -33,7 +33,7 @@ This is the thing, **THE SDLC**
 | 6  | [Deploy](/deploying-and-hosting-gatsby-site-in-firebase) | Truly a ninja moment, nobody knows that this site exists, but it does |
 | 7  | Maintenance | Add more content |
 
-### # Steps to make a gatsby site
+### # Installing Gatsby and a starter theme
 1. Install NodeJS 
 
 1. Install Gatsby CLI
@@ -63,8 +63,10 @@ This is the thing, **THE SDLC**
 
 1. Visit the site `http://localhost:8000/` in browser of your choice. 
 
+### # Starting the custom changes
+
 After seeing the site working. First change we will be making is in `gatsby-config.js` and i have highlighted the updated lines
-  ```json {7-12,19-38,41-48,55,62-64}
+  ```json:title=gatsby-config.js {7-12,19-38,41-48,57,62,70-72}
   require(`dotenv`).config({
     path: `.env`,
   })
@@ -116,12 +118,20 @@ After seeing the site working. First change we will be making is in `gatsby-conf
           ],
         },
       },
-      {
-        resolve: `gatsby-plugin-google-analytics`,
-        options: {
-          trackingId: process.env.GOOGLE_ANALYTICS_ID,
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        // You can add multiple tracking ids and a pageview event will be fired for all of them.
+        trackingIds: [
+          "G-6X2JSPJ1WR", // Google Analytics
+        ],
+        // This object is used for configuration specific to this plugin
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          head: true,
         },
       },
+    },    
       `gatsby-plugin-sitemap`,
       {
         resolve: `gatsby-plugin-manifest`,
@@ -155,24 +165,34 @@ After seeing the site working. First change we will be making is in `gatsby-conf
   ```
 
 #### Changes to home page 
-* Updating the text in homepage banner. Its in a file called `hero.mdx`. To change the banner text (`Hi, I'm Lupin...`), create a folder & file in path mentioned in code header below. 
-    ```MD:title=main-folder/src/@lekoarts/gatsby-theme-minimal-blog/texts/hero.mdx
-    <h3>Hello, I am Sushanth.</h3>
-
-    I am a mainframe Db2 DBA. 
-
-    Yep, mainframe is still there and as usual its highly scalable, highly available and highly secured. 
-    Occasionally, Tom Cruise tries to visit us from ceiling, we just look up and say "Hi Tom" and he just panics and says "Code red, mission compromised" and he does his trailer-shot run. :D
-
-    This site is my sandbox, probably will contain collection of my unorganized notes/articles, programming tests, home projects, fav. music, fav. YT videos and VLC screenshots not sure why i take those, mostly stuff i took time to look at.
+* Updating the text in homepage banner. Its in a file called `hero.mdx`. It needs to be replaced with below content. 
+    ```text:title=src/@lekoarts/gatsby-theme-minimal-blog/texts/hero.mdx
+    <Text sx={{ fontSize: [3, 4, 5], fontWeight: `bold`, color: `heading` }}>
+      Hello, I am Sushanth.
+    </Text>
+    
+    Welcome to my site. 
+    
+    I am a mainframe Db2 DBA. Yep, mainframe is still there and as usual its highly scalable, highly available and highly secured. 
+    
+    If you don't know what mainframe is, you should see [this](https://www.youtube.com/watch?v=ar0xLps7WSY), this is how our work environment looks like. 
+    
+    [This](../hello-world) site is my sandbox, probably will contain collection of my unorganized programming notes, things i learned doing some home projects, fav. music, self development, notes taken while watching youtube videos, etc., more or less.  
+    
+    **Thanks**
     ```
 
-* Updating the "Projects" section of the homepage which is in the bottom after "Latest Posts". Create a file in the path mentioned in the code header below.
-    ```MD:title=main-folder/src/@lekoarts/gatsby-theme-minimal-blog/texts/bottom.mdx 
-    <Title text="Home Projects" />
-
-    - [Stash](http://stash.bobbydreamer.com)
-    - [Feedback Management System](https://feedbacks.bobbydreamer.com/)
+* Updating the "Projects" section of the homepage which is in the bottom after "Latest Posts". 
+    ```text:title=src/@lekoarts/gatsby-theme-minimal-blog/texts/bottom.mdx
+    <Title text="Home Works" />
+    
+    - [Notes from Tedx](../37-tedx)
+    - [Db2 Notes](../105-db2-notes)
+    - [Side projects](../36-side-projects)
+    - [Quest for Wealth - Value Investor Education](../40-wealth-education)
+    - [Working the djinn](../42-working-the-djinn)
+    - [Site Reliability Engineering](../53-sre-references)
+    - [Shortcuts and commands](../74-shortcuts-and-commands)
     ```
 
 #### Adding content  
@@ -181,51 +201,23 @@ After seeing the site working. First change we will be making is in `gatsby-conf
 New page insense like, its an isolated page which needs to be in the top header-menu. For this site, i have decided 
 to have below pages, for now
 + **bio** - Possibly going to be a long resume
-+ **blog** - I have no intention of creating something like article as most of the content is going to be a How-to, Step-by-step and 
-if its NON-IT, just few words on why i took time to post about it. So, subsections of this page going to be 
-    + Notes - I take notes when i am learning something, if i don't have something elaborate, i am going to put that in notes section.
-    + Cheatsheet - This is going to like quick commands to get things done. A quickie. 
-    + Article - Notes & Cheatsheet will eventually evolve into this. 
++ **blog** - This is where the articles will be listed. 
 + **TIL**(Today i learned) - Snippets, life lessons, plans, ideas, todos, bucket list, etc. 
-+ **music** - Playlist of favourite songs. Why Youtube has this weird issue, if a song video is deleted, in your playlist it shows as deleted video, but don't know what got deleted to add that back. So here i am going to put that list. 
-+ **movies** - I used to be a Movie freak, this section will have list of movies i have watched and few sentences on why i like it. 
-+ **fan** - People, whom i followed/follow and get inspiration from. According to me they are the best in what they do. 
++ **music** - My Fav music from Spotify. 
++ **iRevere** - People, whom i followed/follow and get inspiration from. According to me they are the best in what they do. 
 
 
 **Steps to add new page**   
 
-1. Create a new folder inside `content/pages`
-
+1. Create a new folder inside `content/pages` like bio, blog, TIL, music and irevere
 1. Create a new `index.mdx` file
   ![content/pages](./content-pages.PNG)  
-
 1. In `index.mdx` write your frontmatter(title, slug) and content
   ![Page/Frontmatter](./page-frontmatter.PNG)  
 
-1. Optionally add files/images to the folder you want to reference from the page  
-
-1. Go and update `gatsby-config.js --> navigation`  
-  ```js noLineNumbers
-      navigation: [
-        {
-          title: `bio`,
-          slug: `/bio`,
-        },          
-        {
-          title: `music`,
-          slug: `/music`,
-        },
-      ],
-  ```
-
 ##### Adding new post
 
-Posts are something that we create or update regularly, this does not come in header menu. Posts appear in section 
-"Latest Posts" in home page(only latest 3 are shown, no options to increase that)
-
-Posts can be created/added by creating MDX files inside `content/posts` folder.
-
-**Steps to add new page**   
+Posts are blog posts (or) articles and they can be added by creating folders/files inside `content/posts` folder.
 
 1. Create a new folder inside `content/posts`
 
@@ -235,13 +227,11 @@ Posts can be created/added by creating MDX files inside `content/posts` folder.
 1. In `index.mdx` write your frontmatter(title, date, description, tags and slug) and content below it
   ![Post/Frontmatter](./post-frontmatter.PNG)
 
-1. Optionally add files/images to the folder you want to reference from the page
-
 ### # Test 
 
 Testing is quite simple. All you need to do is to type the below command, this will start a development server in your machine and watch for changes and refresh the site(just like nodemon)
 ```sh 
-gatsby develop 
+gatsby develop --verbose
 ```
 
 Below will be the output of the above command 
@@ -300,13 +290,12 @@ info Successfully deleted directories
 1. Code block - You can highlight specific code lines in a code block, turn on/off line numbers, can mention programming language name and title
 1. Blog page will be updated with the list of all the posts in descending order. If post doesn't appear, basically means that .mdx file has issues. Check the VSCode console for any error messages. 
 1. Has Dark mode
-1. Tagging
+1. Blog posts have tags
 1. Images get optimized properly and images have shadow glowing effect
 
 **Disadvantages**    
 
-1. [Gatsby Markdown MDX](https://www.gatsbyjs.org/docs/mdx/markdown-syntax/) - Not all markdown features works like markdown supports html inbetween markdown codes. 
-Here there is no line breaks `<br>`
+1. [Gatsby Markdown MDX](https://www.gatsbyjs.org/docs/mdx/markdown-syntax/) - Regular markdown supports HTML codes but MDX doesn't. Eg:- line breaks `<br>`
 1. Making custom changes to the code, you have to be an expert going through codes in ```node_modules``` folder and sub-folders. 
   ```sh 
   @lekoarts\gatsby-theme-minimal-blog-core
@@ -319,9 +308,10 @@ Here there is no line breaks `<br>`
 Yes. I wanted a simple site to dump my learnings, an online archive, wanted it to be fast, responsive with tagging & code highlighting capabilities for posts. This particular gatsby theme has all of it and more, which i am still exploring. 
 
 ### # Next steps 
-1. [Custom changes](/custom-changes-to-gatsby-theme)
-1. [Changing default theme colors](/changing-gatsby-colors-manually)
-1. [Deploying & Hosting in Firebase](/deploying-and-hosting-gatsby-site-in-firebase)
+1. [First set of custom changes made to this starter theme](../shadowing-and-non-shadowing)
+1. [Adding a Favicon](../adding-favicon-to-gatsby)
+1. [Changing default theme colors](../changing-gatsby-colors-manually)
+1. [Deploying & Hosting in Firebase](../deploying-and-hosting-gatsby-site-in-firebase)
 
 
 **Thank you very much for reading the post**!
